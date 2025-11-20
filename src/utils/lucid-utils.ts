@@ -10,7 +10,7 @@ import {
   TxBuilder,
   UTxO,
 } from '@lucid-evolution/lucid';
-import { OutputDatumD } from '../types/common';
+import { OutputDatumD } from '../types/common.js';
 import { match, P } from 'ts-pattern';
 
 export function isSameOutRef(a: OutRef, b: OutRef): boolean {

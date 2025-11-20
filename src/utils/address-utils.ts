@@ -5,7 +5,7 @@ import {
   Network,
 } from '@lucid-evolution/lucid';
 import { match, P } from 'ts-pattern';
-import { AddressD, CredentialD } from '../types/common';
+import { AddressD, CredentialD } from '../types/common.js';
 
 export function addressFromBech32(address: string): AddressD {
   const details = getAddressDetails(address);

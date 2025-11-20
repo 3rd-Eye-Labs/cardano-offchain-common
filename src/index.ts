@@ -1,7 +1,7 @@
-export * as Value from './utils/value-utils';
-export * from './utils/lucid-utils';
-export * from './utils/common-utils';
-export * from './utils/address-utils';
-export * from './utils/bigint-utils';
+export * as Value from './utils/value-utils.js';
+export * from './utils/lucid-utils.js';
+export * from './utils/common-utils.js';
+export * from './utils/address-utils.js';
+export * from './utils/bigint-utils.js';
 
-export * as CommonTypes from './types/common';
+export * as CommonTypes from './types/common.js';
