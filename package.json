@@ -15,6 +15,7 @@
   "scripts": {
     "build": "tsup src/index.ts --minify --format esm,cjs --dts --clean --tsconfig tsconfig.build.json",
     "lint": "pnpm eslint .",
+    "format:check": "pnpm prettier --check src/ tests/",
     "test": "vitest run"
   },
   "keywords": [],
