@@ -12,19 +12,12 @@ export type OutputReference = Data.Static<typeof OutputReferenceSchema>;
 export const OutputReference =
   OutputReferenceSchema as unknown as OutputReference;
 
-export const VerificationKeyHashSchema = Data.Bytes({
-  minLength: 28,
-  maxLength: 28,
-});
-
 export const CredentialSchema = Data.Enum([
   Data.Object({
-    PublicKeyCredential: Data.Tuple([VerificationKeyHashSchema]),
+    PublicKeyCredential: Data.Tuple([Data.Bytes()]),
   }),
   Data.Object({
-    ScriptCredential: Data.Tuple([
-      Data.Bytes({ minLength: 28, maxLength: 28 }),
-    ]),
+    ScriptCredential: Data.Tuple([Data.Bytes()]),
   }),
 ]);
 export type CredentialD = Data.Static<typeof CredentialSchema>;
@@ -53,6 +46,10 @@ export const AddressSchema = Data.Object({
 });
 export type AddressD = Data.Static<typeof AddressSchema>;
 export const AddressD = AddressSchema as unknown as AddressD;
+
+export function serialiseAddressD(a: AddressD): string {
+  return Data.to(a, AddressD);
+}
 
 export const AssetClassSchema = Data.Object({
   policy_id: Data.Bytes(),

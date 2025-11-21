@@ -13,8 +13,9 @@
     "src/**/*.ts"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --minify --format esm,cjs --dts --clean",
-    "lint": "pnpm eslint ."
+    "build": "tsup src/index.ts --minify --format esm,cjs --dts --clean --tsconfig tsconfig.build.json",
+    "lint": "pnpm eslint .",
+    "test": "vitest run"
   },
   "keywords": [],
   "author": "",
@@ -27,7 +28,8 @@
     "prettier": "^3.6.2",
     "tsup": "^8.5.1",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.47.0"
+    "typescript-eslint": "^8.47.0",
+    "vitest": "^4.0.12"
   },
   "dependencies": {
     "@lucid-evolution/lucid": "^0.4.29",
