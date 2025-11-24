@@ -1,16 +1,18 @@
 import { Data, OutputDatum } from '@lucid-evolution/lucid';
 import { match, P } from 'ts-pattern';
 
-// Generic types for contracts.
-
 export const OutputReferenceSchema = Data.Object({
-  txHash: Data.Bytes({ minLength: 32, maxLength: 32 }),
+  txHash: Data.Bytes(),
   outputIndex: Data.Integer(),
 });
 
 export type OutputReference = Data.Static<typeof OutputReferenceSchema>;
 export const OutputReference =
   OutputReferenceSchema as unknown as OutputReference;
+
+export function serialiseOutputReference(d: OutputReference): string {
+  return Data.to(d, OutputReference);
+}
 
 export const CredentialSchema = Data.Enum([
   Data.Object({
@@ -47,8 +49,8 @@ export const AddressSchema = Data.Object({
 export type AddressD = Data.Static<typeof AddressSchema>;
 export const AddressD = AddressSchema as unknown as AddressD;
 
-export function serialiseAddressD(a: AddressD): string {
-  return Data.to(a, AddressD);
+export function serialiseAddressD(d: AddressD): string {
+  return Data.to(d, AddressD);
 }
 
 export const AssetClassSchema = Data.Object({

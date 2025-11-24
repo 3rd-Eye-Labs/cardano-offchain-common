@@ -1,5 +1,16 @@
 import { Core } from '@evolution-sdk/evolution';
 
+export const OutputReferenceSchema = Core.TSchema.Struct({
+  txHash: Core.TSchema.ByteArray,
+  outputIndex: Core.TSchema.Integer,
+});
+
+export type OutputReference = typeof OutputReferenceSchema.Type;
+
+export function serialiseOutputReference(d: OutputReference): string {
+  return Core.Data.withSchema(OutputReferenceSchema).toCBORHex(d);
+}
+
 const CredentialSchema = Core.TSchema.Union(
   Core.TSchema.Struct(
     { PublicKeyCredential: Core.TSchema.ByteArray },
@@ -36,6 +47,6 @@ export const AddressSchema = Core.TSchema.Struct({
 
 export type AddressD = typeof AddressSchema.Type;
 
-export function serialiseAddressD(a: AddressD): string {
-  return Core.Data.withSchema(AddressSchema).toCBORHex(a);
+export function serialiseAddressD(d: AddressD): string {
+  return Core.Data.withSchema(AddressSchema).toCBORHex(d);
 }
