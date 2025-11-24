@@ -1,5 +1,5 @@
 import { Assets, toUnit, Unit } from '@lucid-evolution/lucid';
-import { AssetClass } from '../types/common.js';
+import { AssetClass } from '../types.js';
 
 export function mkLovelacesOf(amount: bigint): Assets {
   return { lovelace: amount };

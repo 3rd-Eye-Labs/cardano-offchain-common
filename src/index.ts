@@ -1,7 +1,3 @@
-export * as ValueUtils from './utils/value-utils.js';
-export * from './utils/lucid-utils.js';
-export * from './utils/common-utils.js';
-export * from './utils/address-utils.js';
-export * from './utils/bigint-utils.js';
+export * as LucidCommon from './lucid/index.js';
 
-export * as CommonTypes from './types/common.js';
+export * as EvoCommon from './evo/index.js';

@@ -1,11 +1,13 @@
 import {
   Credential,
   credentialToAddress,
+  fromHex,
   getAddressDetails,
   Network,
+  toHex,
 } from '@lucid-evolution/lucid';
 import { match, P } from 'ts-pattern';
-import { AddressD, CredentialD } from '../types/common.js';
+import { AddressD, CredentialD } from '../types.js';
 
 export function addressFromBech32(address: string): AddressD {
   const details = getAddressDetails(address);
@@ -15,11 +17,11 @@ export function addressFromBech32(address: string): AddressD {
       .returnType<CredentialD>()
       .with({ type: 'Key', hash: P.select() }, (pkh) => {
         return {
-          PublicKeyCredential: [pkh],
+          PublicKeyCredential: fromHex(pkh),
         };
       })
       .with({ type: 'Script', hash: P.select() }, (scriptHash) => ({
-        ScriptCredential: [scriptHash],
+        ScriptCredential: fromHex(scriptHash),
       }))
       .exhaustive();
   };
@@ -38,7 +40,7 @@ export function addressFromBech32(address: string): AddressD {
       paymentCredential: matchCred(details.paymentCredential),
       stakeCredential: details.stakeCredential
         ? {
-            Inline: [matchCred(details.stakeCredential)],
+            Inline: matchCred(details.stakeCredential),
           }
         : null,
     }));
@@ -48,18 +50,18 @@ export function addressToBech32(address: AddressD, network: Network): string {
   const matchCred = (cred: CredentialD) =>
     match(cred)
       .returnType<Credential>()
-      .with({ PublicKeyCredential: [P.select()] }, (pkh) => {
-        return { type: 'Key', hash: pkh };
+      .with({ PublicKeyCredential: P.select() }, (pkh) => {
+        return { type: 'Key', hash: toHex(pkh) };
       })
-      .with({ ScriptCredential: [P.select()] }, (scriptCred) => {
-        return { type: 'Script', hash: scriptCred };
+      .with({ ScriptCredential: P.select() }, (scriptCred) => {
+        return { type: 'Script', hash: toHex(scriptCred) };
       })
       .exhaustive();
 
   const stakeCred: Credential | undefined = match(address.stakeCredential)
     .returnType<Credential | undefined>()
     .with(P.nullish, () => undefined)
-    .with({ Inline: [P.select()] }, (cred) => matchCred(cred))
+    .with({ Inline: P.select() }, (cred) => matchCred(cred))
     .otherwise(() => {
       throw new Error('Unexpected stake credential format.');
     });
