@@ -1,6 +1,7 @@
 import eslint from '@eslint/js';
 import { defineConfig } from 'eslint/config';
 import tseslint from 'typescript-eslint';
+import vitestEslint from '@vitest/eslint-plugin';
 
 export default defineConfig(
   {
@@ -9,6 +10,8 @@ export default defineConfig(
   {
     files: ['**/*.ts'],
     extends: [
+      // The vitest eslint recommended is important at least because it's easy to forget `expect`'s matcher calls.
+      vitestEslint.configs.recommended,
       eslint.configs.recommended,
       tseslint.configs.recommendedTypeChecked,
       {
@@ -21,6 +24,7 @@ export default defineConfig(
       },
     ],
     rules: {
+      'vitest/expect-expect': 'off',
       'no-unreachable': 'warn',
       'no-use-before-define': 'error',
       'no-unused-expressions': 'warn',
