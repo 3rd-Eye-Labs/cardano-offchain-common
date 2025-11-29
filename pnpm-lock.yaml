@@ -9,16 +9,13 @@ importers:
   .:
     dependencies:
       '@evolution-sdk/evolution':
-        specifier: ^0.2.5
+        specifier: 0.2.x
         version: 0.2.5(@effect/cluster@0.48.16(@effect/platform@0.90.10(effect@3.19.5))(@effect/rpc@0.69.5(@effect/platform@0.90.10(effect@3.19.5))(effect@3.19.5))(@effect/sql@0.44.2(@effect/experimental@0.54.6(@effect/platform@0.90.10(effect@3.19.5))(effect@3.19.5))(@effect/platform@0.90.10(effect@3.19.5))(effect@3.19.5))(@effect/workflow@0.9.6(@effect/platform@0.90.10(effect@3.19.5))(@effect/rpc@0.69.5(@effect/platform@0.90.10(effect@3.19.5))(effect@3.19.5))(effect@3.19.5))(effect@3.19.5))(@effect/rpc@0.69.5(@effect/platform@0.90.10(effect@3.19.5))(effect@3.19.5))(@effect/sql@0.44.2(@effect/experimental@0.54.6(@effect/platform@0.90.10(effect@3.19.5))(effect@3.19.5))(@effect/platform@0.90.10(effect@3.19.5))(effect@3.19.5))
-      '@harmoniclabs/crypto':
-        specifier: 0.3.x
-        version: 0.3.0
       '@lucid-evolution/lucid':
         specifier: 0.4.x
         version: 0.4.29(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.6.6)(@harmoniclabs/crypto@0.3.0)(@harmoniclabs/pair@1.0.0)(fast-check@3.23.2)
       ts-pattern:
-        specifier: ^5.9.0
+        specifier: 5.9.x
         version: 5.9.0
     devDependencies:
       '@eslint/js':

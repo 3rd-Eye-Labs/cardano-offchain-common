@@ -36,10 +36,7 @@
   },
   "peerDependencies": {
     "@lucid-evolution/lucid": "0.4.x",
-    "@harmoniclabs/crypto": "0.3.x"
-  },
-  "dependencies": {
-    "@evolution-sdk/evolution": "^0.2.5",
-    "ts-pattern": "^5.9.0"
+    "@evolution-sdk/evolution": "0.2.x",
+    "ts-pattern": "5.9.x"
   }
 }
