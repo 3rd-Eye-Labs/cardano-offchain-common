@@ -50,3 +50,14 @@ export type AddressD = typeof AddressSchema.Type;
 export function serialiseAddressD(d: AddressD): string {
   return Core.Data.withSchema(AddressSchema).toCBORHex(d);
 }
+
+export const AssetClassSchema = Core.TSchema.Struct({
+  currencySymbol: Core.TSchema.ByteArray,
+  tokenName: Core.TSchema.ByteArray,
+});
+
+export type AssetClass = typeof AssetClassSchema.Type;
+
+export function serialiseAssetClass(ac: AssetClass): string {
+  return Core.Data.withSchema(AssetClassSchema).toCBORHex(ac);
+}

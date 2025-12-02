@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   serialiseAddressD,
+  serialiseAssetClass,
   serialiseOutputReference,
 } from '../src/evo/types.js';
 import { fromHex } from '@lucid-evolution/lucid';
@@ -71,6 +72,17 @@ describe('Evo generic types serialisation', () => {
           },
         }),
       ).toEqual('d8799fd87a9f40ffd8799fd87a9fd8799f000000ffffffff');
+    });
+  });
+
+  describe('AssetClass', () => {
+    it('AssetClass 1', () => {
+      expect(
+        serialiseAssetClass({
+          currencySymbol: fromHex(''),
+          tokenName: fromHex(''),
+        }),
+      ).toEqual('d8799f4040ff');
     });
   });
 });
